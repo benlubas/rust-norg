@@ -1,4 +1,3 @@
-
 use std::fs::File;
 use std::io::Read;
 use std::path::Path;
@@ -14,6 +13,5 @@ fn main() {
     let mut s = String::new();
     file.read_to_string(&mut s).unwrap();
 
-    println!("{:?}", parse_tree(&s).unwrap());
-
+    println!("{:#?}", parse_tree(&s).unwrap());
 }
