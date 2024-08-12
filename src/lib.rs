@@ -1,6 +1,5 @@
 use chumsky::Parser as _;
 use error::NorgParseError;
-use stage_4::NorgAST;
 
 use crate::stage_1::stage_1;
 use crate::stage_2::stage_2;
@@ -12,6 +11,7 @@ pub use crate::stage_3::{
     CarryoverTag, DetachedModifierExtension, NestableDetachedModifier, NorgASTFlat,
     RangeableDetachedModifier, RangedTag, TodoStatus,
 };
+pub use crate::stage_4::NorgAST;
 
 mod error;
 mod stage_1;
@@ -43,7 +43,7 @@ mod tests {
     use itertools::Itertools;
     use proptest::{prop_oneof, proptest};
 
-    use crate::parse;
+    use crate::{parse, parse_tree};
 
     const TAG_NAME_REGEX: &str = r"[\w_\-\.\d]+";
     const TAG_PARAMETER_REGEX: &str = r"[^\s]+";
@@ -90,8 +90,7 @@ mod tests {
     }
 
     #[test]
-    fn delimiter_mods() {
-        // TODO: test these with parse_tree() when this is merged.
+    fn delimiting_mods() {
         let examples: Vec<_> = [
             "---",
             "===",
@@ -122,6 +121,46 @@ mod tests {
         .into_iter()
         .map(|example| example.to_string() + "\n")
         .map(|str| parse(&str))
+        .try_collect()
+        .unwrap();
+
+        assert_yaml_snapshot!(examples);
+    }
+
+    #[test]
+    fn delimiting_mods_tree() {
+        let examples: Vec<_> = [
+            "* One
+               content
+               ---
+             dedented",
+            "* One
+             ** Two
+                ===
+             none",
+            "** Two
+                two
+                ___
+                two",
+            "- list
+             ___
+             no list",
+            "* One
+               one
+             ** Two
+                two
+             *** Three
+                 three
+                 ---
+                two
+                ---
+               one
+               ---
+             none",
+        ]
+        .into_iter()
+        .map(|example| example.to_string() + "\n")
+        .map(|str| parse_tree(&str))
         .try_collect()
         .unwrap();
 

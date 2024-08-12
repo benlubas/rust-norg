@@ -1,0 +1,82 @@
+---
+source: src/lib.rs
+expression: examples
+---
+- - Heading:
+      level: 1
+      title:
+        - Text: One
+      extensions: []
+      content:
+        - Paragraph:
+            - Text: content
+  - Paragraph:
+      - Text: dedented
+- - Heading:
+      level: 1
+      title:
+        - Text: One
+      extensions: []
+      content:
+        - Heading:
+            level: 2
+            title:
+              - Text: Two
+            extensions: []
+            content: []
+  - Paragraph:
+      - Text: none
+- - Heading:
+      level: 2
+      title:
+        - Text: Two
+      extensions: []
+      content:
+        - Paragraph:
+            - Text: two
+        - DelimitingModifier: HorizontalRule
+        - Paragraph:
+            - Text: two
+- - NestableDetachedModifier:
+      modifier_type: UnorderedList
+      level: 1
+      extensions: []
+      text:
+        Paragraph:
+          - Text: list
+      content: []
+  - DelimitingModifier: HorizontalRule
+  - Paragraph:
+      - Text: "no"
+      - Whitespace
+      - Text: list
+- - Heading:
+      level: 1
+      title:
+        - Text: One
+      extensions: []
+      content:
+        - Paragraph:
+            - Text: one
+        - Heading:
+            level: 2
+            title:
+              - Text: Two
+            extensions: []
+            content:
+              - Paragraph:
+                  - Text: two
+              - Heading:
+                  level: 3
+                  title:
+                    - Text: Three
+                  extensions: []
+                  content:
+                    - Paragraph:
+                        - Text: three
+              - Paragraph:
+                  - Text: two
+        - Paragraph:
+            - Text: one
+  - Paragraph:
+      - Text: none
