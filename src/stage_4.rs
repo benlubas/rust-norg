@@ -188,12 +188,17 @@ pub fn stage_4(flat: Vec<NorgASTFlat>) -> Vec<NorgAST> {
             for j in (i + 1)..flat.len() {
                 if let NorgASTFlat::NestableDetachedModifier { level, .. } = &flat[j] {
                     if level <= start_level {
-                        // stop.
                         content = stage_4(flat[(i + 1)..j].to_vec());
                         i = j - 1;
                         break;
+                    } else if j == flat.len() - 1 {
+                        content = stage_4(flat[(i + 1)..].to_vec());
+                        i = j + 1;
+                        break;
                     }
                 } else {
+                    content = stage_4(flat[(i + 1)..j].to_vec());
+                    i = j - 1;
                     // stop immediately if we see something that's not a NestableDetachedModifier
                     // of lesser level
                     break;
