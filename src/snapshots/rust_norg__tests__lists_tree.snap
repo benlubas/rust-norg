@@ -1,0 +1,91 @@
+---
+source: src/lib.rs
+expression: examples
+---
+- - NestableDetachedModifier:
+      modifier_type: UnorderedList
+      level: 1
+      extensions: []
+      text:
+        Paragraph:
+          - Text: base
+      content: []
+- - NestableDetachedModifier:
+      modifier_type: UnorderedList
+      level: 1
+      extensions: []
+      text:
+        Paragraph:
+          - Text: one
+      content:
+        - NestableDetachedModifier:
+            modifier_type: UnorderedList
+            level: 2
+            extensions: []
+            text:
+              Paragraph:
+                - Text: two
+            content: []
+- - NestableDetachedModifier:
+      modifier_type: UnorderedList
+      level: 1
+      extensions: []
+      text:
+        Paragraph:
+          - Text: one
+      content:
+        - NestableDetachedModifier:
+            modifier_type: UnorderedList
+            level: 2
+            extensions: []
+            text:
+              Paragraph:
+                - Text: two
+                - Text: with
+                - Whitespace
+                - Text: content
+            content: []
+        - NestableDetachedModifier:
+            modifier_type: UnorderedList
+            level: 2
+            extensions: []
+            text:
+              Paragraph:
+                - Text: two
+                - Whitespace
+                - Special: (
+                - Text: "2"
+                - Special: )
+            content:
+              - NestableDetachedModifier:
+                  modifier_type: UnorderedList
+                  level: 3
+                  extensions: []
+                  text:
+                    Paragraph:
+                      - Text: three
+                  content: []
+  - NestableDetachedModifier:
+      modifier_type: UnorderedList
+      level: 1
+      extensions: []
+      text:
+        Paragraph:
+          - Text: one
+      content: []
+- - NestableDetachedModifier:
+      modifier_type: UnorderedList
+      level: 2
+      extensions: []
+      text:
+        Paragraph:
+          - Text: two
+      content: []
+  - NestableDetachedModifier:
+      modifier_type: UnorderedList
+      level: 1
+      extensions: []
+      text:
+        Paragraph:
+          - Text: one
+      content: []
