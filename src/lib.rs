@@ -92,6 +92,29 @@ mod tests {
     }
 
     #[test]
+    fn headings_tree() {
+        let headings_tree_examples: Vec<_> = [
+            "
+            * Heading
+            ** Another heading
+            ",
+            "
+            * Heading
+            ** Subheading
+               content
+            * Back to regular heading
+            ",
+        ]
+        .into_iter()
+        .map(|example| example.to_string() + "\n")
+        .map(|str| parse_tree(&str))
+        .try_collect()
+        .unwrap();
+
+        assert_yaml_snapshot!(headings_tree_examples);
+    }
+
+    #[test]
     fn delimiting_mods() {
         let examples: Vec<_> = [
             "---",
@@ -486,6 +509,38 @@ mod tests {
         .into_iter()
         .map(|example| example.to_string() + "\n")
         .map(|str| parse(&str))
+        .try_collect()
+        .unwrap();
+
+        assert_yaml_snapshot!(examples);
+    }
+
+    #[test]
+    fn carryover_tags_tree() {
+        let examples: Vec<_> = [
+            "
+            #id 123
+            * tree
+            ** nested
+            ",
+            "
+            * tree
+            #id there
+            ** nested
+               ---
+             part of tree
+            ",
+            "
+            #name main
+            -- two
+            ---- four
+            #id 3
+            --- three
+            "
+        ]
+        .into_iter()
+        .map(|example| example.to_string() + "\n")
+        .map(|str| parse_tree(&str))
         .try_collect()
         .unwrap();
 
