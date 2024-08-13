@@ -9,9 +9,11 @@ expression: examples
       extensions: []
       content:
         - Paragraph:
-            - Text: content
+            - Token:
+                Text: content
   - Paragraph:
-      - Text: dedented
+      - Token:
+          Text: dedented
 - - Heading:
       level: 1
       title:
@@ -25,7 +27,8 @@ expression: examples
             extensions: []
             content: []
   - Paragraph:
-      - Text: none
+      - Token:
+          Text: none
 - - Heading:
       level: 2
       title:
@@ -33,23 +36,28 @@ expression: examples
       extensions: []
       content:
         - Paragraph:
-            - Text: two
+            - Token:
+                Text: two
         - DelimitingModifier: HorizontalRule
         - Paragraph:
-            - Text: two
+            - Token:
+                Text: two
 - - NestableDetachedModifier:
       modifier_type: UnorderedList
       level: 1
       extensions: []
       text:
         Paragraph:
-          - Text: list
+          - Token:
+              Text: list
       content: []
   - DelimitingModifier: HorizontalRule
   - Paragraph:
-      - Text: "no"
-      - Whitespace
-      - Text: list
+      - Token:
+          Text: "no"
+      - Token: Whitespace
+      - Token:
+          Text: list
 - - Heading:
       level: 1
       title:
@@ -57,7 +65,8 @@ expression: examples
       extensions: []
       content:
         - Paragraph:
-            - Text: one
+            - Token:
+                Text: one
         - Heading:
             level: 2
             title:
@@ -65,7 +74,8 @@ expression: examples
             extensions: []
             content:
               - Paragraph:
-                  - Text: two
+                  - Token:
+                      Text: two
               - Heading:
                   level: 3
                   title:
@@ -73,10 +83,14 @@ expression: examples
                   extensions: []
                   content:
                     - Paragraph:
-                        - Text: three
+                        - Token:
+                            Text: three
               - Paragraph:
-                  - Text: two
+                  - Token:
+                      Text: two
         - Paragraph:
-            - Text: one
+            - Token:
+                Text: one
   - Paragraph:
-      - Text: none
+      - Token:
+          Text: none

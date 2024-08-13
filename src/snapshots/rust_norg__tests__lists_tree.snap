@@ -8,7 +8,8 @@ expression: examples
       extensions: []
       text:
         Paragraph:
-          - Text: base
+          - Token:
+              Text: base
       content: []
 - - NestableDetachedModifier:
       modifier_type: UnorderedList
@@ -16,7 +17,8 @@ expression: examples
       extensions: []
       text:
         Paragraph:
-          - Text: one
+          - Token:
+              Text: one
       content:
         - NestableDetachedModifier:
             modifier_type: UnorderedList
@@ -24,7 +26,8 @@ expression: examples
             extensions: []
             text:
               Paragraph:
-                - Text: two
+                - Token:
+                    Text: two
             content: []
 - - NestableDetachedModifier:
       modifier_type: UnorderedList
@@ -32,7 +35,8 @@ expression: examples
       extensions: []
       text:
         Paragraph:
-          - Text: one
+          - Token:
+              Text: one
       content:
         - NestableDetachedModifier:
             modifier_type: UnorderedList
@@ -40,10 +44,14 @@ expression: examples
             extensions: []
             text:
               Paragraph:
-                - Text: two
-                - Text: with
-                - Whitespace
-                - Text: content
+                - Token:
+                    Text: two
+                - Token: Whitespace
+                - Token:
+                    Text: with
+                - Token: Whitespace
+                - Token:
+                    Text: content
             content: []
         - NestableDetachedModifier:
             modifier_type: UnorderedList
@@ -51,11 +59,15 @@ expression: examples
             extensions: []
             text:
               Paragraph:
-                - Text: two
-                - Whitespace
-                - Special: (
-                - Text: "2"
-                - Special: )
+                - Token:
+                    Text: two
+                - Token: Whitespace
+                - Token:
+                    Special: (
+                - Token:
+                    Text: "2"
+                - Token:
+                    Special: )
             content:
               - NestableDetachedModifier:
                   modifier_type: UnorderedList
@@ -63,7 +75,8 @@ expression: examples
                   extensions: []
                   text:
                     Paragraph:
-                      - Text: three
+                      - Token:
+                          Text: three
                   content: []
   - NestableDetachedModifier:
       modifier_type: UnorderedList
@@ -71,7 +84,8 @@ expression: examples
       extensions: []
       text:
         Paragraph:
-          - Text: one
+          - Token:
+              Text: one
       content: []
 - - NestableDetachedModifier:
       modifier_type: UnorderedList
@@ -79,7 +93,8 @@ expression: examples
       extensions: []
       text:
         Paragraph:
-          - Text: two
+          - Token:
+              Text: two
       content: []
   - NestableDetachedModifier:
       modifier_type: UnorderedList
@@ -87,5 +102,6 @@ expression: examples
       extensions: []
       text:
         Paragraph:
-          - Text: one
+          - Token:
+              Text: one
       content: []

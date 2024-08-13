@@ -1,14 +1,14 @@
 use serde::Serialize;
 
 use crate::{
-    stage_2::ParagraphSegment,
-    stage_3::{DelimitingModifier, NorgASTFlat},
-    CarryoverTag, DetachedModifierExtension, NestableDetachedModifier, RangeableDetachedModifier,
+    stage_3::{DelimitingModifier, NorgASTFlat, ParagraphSegment},
+    CarryoverTag, DetachedModifierExtension, NestableDetachedModifier, ParagraphSegmentToken,
+    RangeableDetachedModifier,
 };
 
 #[derive(Debug, PartialEq, Eq, Clone, Hash, Serialize)]
 pub enum NorgAST {
-    Paragraph(ParagraphSegment),
+    Paragraph(Vec<ParagraphSegment>),
     NestableDetachedModifier {
         modifier_type: NestableDetachedModifier,
         level: u16,
@@ -18,13 +18,13 @@ pub enum NorgAST {
     },
     RangeableDetachedModifier {
         modifier_type: RangeableDetachedModifier,
-        title: ParagraphSegment,
+        title: Vec<ParagraphSegmentToken>,
         extensions: Vec<DetachedModifierExtension>,
         content: Vec<NorgASTFlat>,
     },
     Heading {
         level: u16,
-        title: ParagraphSegment,
+        title: Vec<ParagraphSegmentToken>,
         extensions: Vec<DetachedModifierExtension>,
         content: Vec<Self>,
     },
