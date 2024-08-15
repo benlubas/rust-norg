@@ -1,0 +1,45 @@
+---
+source: src/lib.rs
+expression: examples
+---
+- - Heading:
+      level: 1
+      title:
+        - Text: Heading
+      extensions: []
+      content:
+        - Heading:
+            level: 2
+            title:
+              - Text: Another
+              - Whitespace
+              - Text: heading
+            extensions: []
+            content: []
+- - Heading:
+      level: 1
+      title:
+        - Text: Heading
+      extensions: []
+      content:
+        - Heading:
+            level: 2
+            title:
+              - Text: Subheading
+            extensions: []
+            content:
+              - Paragraph:
+                  - Token:
+                      Text: content
+  - Heading:
+      level: 1
+      title:
+        - Text: Back
+        - Whitespace
+        - Text: to
+        - Whitespace
+        - Text: regular
+        - Whitespace
+        - Text: heading
+      extensions: []
+      content: []

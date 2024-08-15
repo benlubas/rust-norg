@@ -1,0 +1,99 @@
+---
+source: src/lib.rs
+expression: examples
+---
+- - DelimitingModifier: Weak
+- - DelimitingModifier: Strong
+- - DelimitingModifier: HorizontalRule
+- - DelimitingModifier: Weak
+- - DelimitingModifier: Weak
+- - Heading:
+      level: 1
+      title:
+        - Text: Heading
+      extensions: []
+  - Paragraph:
+      - Token:
+          Text: Content
+  - DelimitingModifier: Weak
+  - Paragraph:
+      - Token:
+          Text: Dedented
+- - Heading:
+      level: 2
+      title:
+        - Text: Heading
+      extensions: []
+  - DelimitingModifier: Strong
+  - Paragraph:
+      - Token:
+          Text: Dedented
+      - Token: Whitespace
+      - Token:
+          Text: fully
+- - Heading:
+      level: 2
+      title:
+        - Text: Heading
+      extensions: []
+  - Paragraph:
+      - Token:
+          Text: content
+  - DelimitingModifier: HorizontalRule
+  - Paragraph:
+      - Token:
+          Text: "no"
+      - Token: Whitespace
+      - Token:
+          Text: indent
+      - Token: Whitespace
+      - Token:
+          Text: change
+- - NestableDetachedModifier:
+      modifier_type: UnorderedList
+      level: 1
+      extensions: []
+      content:
+        Paragraph:
+          - Token:
+              Text: list
+  - DelimitingModifier: HorizontalRule
+  - Paragraph:
+      - Token:
+          Text: "no"
+      - Token: Whitespace
+      - Token:
+          Text: list
+- - Paragraph:
+      - Token:
+          Special: "-"
+      - Token:
+          Special: "-"
+      - Token:
+          Special: "-"
+      - Token:
+          Text: not
+      - Token: Whitespace
+      - Token:
+          Text: a
+      - Token: Whitespace
+      - Token:
+          Text: delimiter
+- - RangedTag:
+      name:
+        - "==nope"
+      parameters: []
+      content: []
+- - Paragraph:
+      - Token:
+          Special: _
+- - Paragraph:
+      - Token:
+          Text: hi
+      - Token: Whitespace
+      - Token:
+          Special: "-"
+      - Token:
+          Special: "-"
+      - Token:
+          Special: "-"
